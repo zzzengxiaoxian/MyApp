@@ -1,0 +1,34 @@
+buildscript {
+
+    // version define;
+    ext {
+        setup = [compileSdk: 24,
+                 buildTools: "24.0.0",
+                 minSdk    : 10,
+                 targetSdk : 24]
+
+        versions = [supportLib: "24.0.0"]
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.2'
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
+
+allprojects {
+    group = 'com.wrapp.floatlabelededittext'
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    }
+
+}
