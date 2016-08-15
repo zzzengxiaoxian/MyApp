@@ -18,6 +18,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -26,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.LDM.util.LOGutil;
@@ -33,11 +36,13 @@ import com.LDM.util.MT_tabs.OneFragment;
 import com.LDM.util.MT_tabs.ResettableFragment;
 import com.LDM.util.MT_tabs.ThreeFragment;
 import com.LDM.util.MT_tabs.TwoFragment;
+import com.adapter.RecyclerViewAdapter;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.CircleView;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.afollestad.materialdialogs.util.DialogUtils;
+import com.bean.News;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
@@ -72,6 +77,7 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.karim.MaterialTabs;
 
@@ -79,6 +85,9 @@ import io.karim.MaterialTabs;
  * Created by dell on 2016/8/3.
  */
 public class MainActivity extends AppCompatActivity implements ColorChooserDialog.ColorCallback {
+
+
+
 
 
     private static final int PROFILE_SETTING = 100000;
@@ -101,6 +110,9 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
     ViewPager mViewPager;
     MaterialTabs mMaterialTabs;
+
+    public MainActivity() {
+    }
 
     private void showToast(String message) {
         if (mToast != null) {
@@ -144,6 +156,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isFirstIn", false);
         editor.commit();
+
+
 
 
         FloatView();
@@ -366,6 +380,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
     }
 
+
+
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
@@ -571,10 +587,10 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
     public class MainActivityPagerAdapter extends FragmentPagerAdapter implements MaterialTabs.CustomTabProvider {
 
-        private final String[] TITLES = {"Tabs", "Ripple","material"};
+        private final String[] TITLES = {"Tabs", "Ripple", "material"};
 
-        private final int[] UNSELECTED_ICONS = {R.drawable.ic_tabs_unselected, R.drawable.ic_ripple_unselected};
-        private final int[] SELECTED_ICONS = {R.drawable.ic_tabs_selected, R.drawable.ic_ripple_selected};
+        private final int[] UNSELECTED_ICONS = {R.drawable.ic_tabs_unselected, R.drawable.ic_ripple_unselected, R.drawable.ic_ripple_unselected};
+        private final int[] SELECTED_ICONS = {R.drawable.ic_tabs_selected, R.drawable.ic_ripple_selected, R.drawable.ic_ripple_selected};
 
         public MainActivityPagerAdapter(FragmentManager fm) {
             super(fm);

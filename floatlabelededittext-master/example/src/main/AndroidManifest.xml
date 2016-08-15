@@ -31,11 +31,8 @@
             android:label="LIUDONGMING"></activity>
         <activity android:name=".ColorChoose"></activity>
 
-        <activity
-            android:name=".PageView"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".PageView2"></activity>
+        <activity android:name=".NewsActivity"/>
     </application>
 
 </manifest>
