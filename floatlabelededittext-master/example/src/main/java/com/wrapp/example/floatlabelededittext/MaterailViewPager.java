@@ -19,7 +19,7 @@ import com.github.florent37.materialviewpager.header.HeaderDesign;
 /**
  * Created by dell on 2016/8/10.
  */
-public class PageView2 extends ActionBarActivity {
+public class MaterailViewPager extends ActionBarActivity {
 
 
     private MaterialViewPager mViewPager;

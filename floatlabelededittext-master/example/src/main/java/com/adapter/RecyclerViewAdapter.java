@@ -45,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         public NewsViewHolder(final View itemView) {
             super(itemView);
-            cardView = (CardView) itemView.findViewById(R.id.card_view);
+            cardView = (CardView) itemView.findViewById(R.id.one_card_view);
             news_photo = (ImageView) itemView.findViewById(R.id.news_photo);
             news_title = (TextView) itemView.findViewById(R.id.news_title);
             news_desc = (TextView) itemView.findViewById(R.id.news_desc);

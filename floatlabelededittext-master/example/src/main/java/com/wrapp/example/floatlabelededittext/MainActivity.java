@@ -18,8 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -28,21 +26,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.LDM.util.LOGutil;
+import com.LDM.util.L;
 import com.LDM.util.MT_tabs.OneFragment;
 import com.LDM.util.MT_tabs.ResettableFragment;
 import com.LDM.util.MT_tabs.ThreeFragment;
 import com.LDM.util.MT_tabs.TwoFragment;
-import com.adapter.RecyclerViewAdapter;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.CircleView;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.afollestad.materialdialogs.util.DialogUtils;
-import com.bean.News;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
@@ -77,7 +72,6 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.karim.MaterialTabs;
 
@@ -85,9 +79,6 @@ import io.karim.MaterialTabs;
  * Created by dell on 2016/8/3.
  */
 public class MainActivity extends AppCompatActivity implements ColorChooserDialog.ColorCallback {
-
-
-
 
 
     private static final int PROFILE_SETTING = 100000;
@@ -158,8 +149,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         editor.commit();
 
 
-
-
         FloatView();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -197,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                     public boolean onProfileChanged(View view, IProfile profile, boolean current) {
                         //sample usage of the onProfileChanged listener
                         //if the clicked item has the identifier 1 add a new profile ;)
-                        LOGutil.d("TAG", profile.toString());
+                        L.d("TAG", profile.toString());
                         if (profile instanceof IDrawerItem && profile.getIdentifier() == PROFILE_SETTING) {
 
                             showToast("退出到主界面更换账户");
@@ -219,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                 .withItemAnimator(new AlphaCrossFadeAnimator())
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName(R.string.drawer_item_compact_header).withDescription(R.string.drawer_item_compact_header_desc).withIcon(GoogleMaterial.Icon.gmd_sun).withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_ImageLoader).withDescription(R.string.drawer_item_ImageLoader_desc).withIcon(GoogleMaterial.Icon.gmd_pizza).withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.draw_item_MaterialViewPage).withDescription(R.string.draw_item_MaterialViewPage_desc).withIcon(FontAwesome.Icon.faw_home).withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_multi_drawer).withDescription(R.string.drawer_item_multi_drawer_desc).withIcon(FontAwesome.Icon.faw_gamepad).withIdentifier(3).withSelectable(false),
                         new PrimaryDrawerItem().withName(R.string.drawer_item_non_translucent_status_drawer).withDescription(R.string.drawer_item_non_translucent_status_drawer_desc).withIcon(FontAwesome.Icon.faw_eye).withIdentifier(4).withSelectable(false).withBadgeStyle(new BadgeStyle().withTextColor(Color.WHITE).withColorRes(R.color.md_red_700)),
@@ -261,9 +250,9 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-//                                intent = new Intent(DrawerActivity.this, CompactHeaderDrawerActivity.class);
+                                intent = new Intent(MainActivity.this, ImageGridActivity.class);
                             } else if (drawerItem.getIdentifier() == 2) {
-                                intent = new Intent(MainActivity.this, PageView2.class);
+                                intent = new Intent(MainActivity.this, MaterailViewPager.class);
                             } else if (drawerItem.getIdentifier() == 3) {
 //                                intent = new Intent(DrawerActivity.this, MultiDrawerActivity.class);
                             } else if (drawerItem.getIdentifier() == 4) {
@@ -379,7 +368,6 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
 
 
     }
-
 
 
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {

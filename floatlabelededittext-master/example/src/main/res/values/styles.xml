@@ -132,4 +132,8 @@
         <item name="cet_spanSpacing">4dp</item>
     </style>
 
+    <!--加载图片时候的 progressbard  -->
+    <style name="ProgressBarStyle" parent="@android:style/Widget.ProgressBar.Horizontal"/>
+
+
 </resources>

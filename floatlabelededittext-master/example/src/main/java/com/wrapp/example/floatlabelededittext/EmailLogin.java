@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.LDM.util.LOGutil;
+import com.LDM.util.L;
 import com.LDM.util.Sqlite.UserService;
 
 /**
@@ -62,19 +62,19 @@ public class EmailLogin extends AppCompatActivity {
             public void onClick(View v) {
                 String name = edtemail.getText().toString();
                 String pwd = edtpassword.getText().toString();
-                LOGutil.d("TAG", name + "_"+pwd);
+                L.d("TAG", name + "_"+pwd);
 
                 UserService uService = new UserService(EmailLogin.this);
                 boolean flag = uService.login(name, pwd);
                 if (flag) {
-                    LOGutil.d("TAG", "登录成功");
+                    L.d("TAG", "登录成功");
                     Toast.makeText(EmailLogin.this, "登录成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent.setClass(EmailLogin.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    LOGutil.d("TAG", "登录失败");
+                    L.d("TAG", "登录失败");
                     Toast.makeText(EmailLogin.this, "登录失败", Toast.LENGTH_LONG).show();
                 }
 

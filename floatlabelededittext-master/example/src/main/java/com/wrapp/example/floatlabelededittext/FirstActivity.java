@@ -5,9 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 
-import com.LDM.util.LOGutil;
+import com.LDM.util.L;
 
 /**
  * Created by dell on 2016/8/7.
@@ -36,13 +35,13 @@ public class FirstActivity extends Activity {
             public void run() {
                 //判断程序第几次启动
                 if (isFirst) {
-                LOGutil.d("TAG", "第一次登陆");
+                L.d("TAG", "第一次登陆");
                 Intent intent = new Intent();
                 intent.setClass(FirstActivity.this, AppIntro.class);
                 FirstActivity.this.startActivity(intent);
                 FirstActivity.this.finish();
                 } else {
-                    LOGutil.d("TAG", "第二次登陆");
+                    L.d("TAG", "第二次登陆");
                     Intent intent = new Intent();
                     intent.setClass(FirstActivity.this, MainActivity.class);
                     FirstActivity.this.startActivity(intent);

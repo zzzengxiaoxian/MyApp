@@ -3,8 +3,10 @@
     package="com.wrapp.example.floatlabelededittext">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="com.LDM.util.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -31,8 +33,11 @@
             android:label="LIUDONGMING"></activity>
         <activity android:name=".ColorChoose"></activity>
 
-        <activity android:name=".PageView2"></activity>
-        <activity android:name=".NewsActivity"/>
+        <activity android:name=".MaterailViewPager"></activity>
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".ConvenientBanner.BannerTest" />
+        <activity android:name=".ImageGridActivity" />
+        <activity android:name=".ImagePagerActivity" />
     </application>
 
 </manifest>

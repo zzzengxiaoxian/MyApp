@@ -8,10 +8,10 @@ import android.util.Log;
  * @author way
  * 
  */
-public class LOGutil
+public class L
 {
 
-	private LOGutil()
+	private L()
 	{
 		/* cannot be instantiated */
 		throw new UnsupportedOperationException("cannot be instantiated");

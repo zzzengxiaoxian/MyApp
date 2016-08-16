@@ -36,6 +36,13 @@
     </string-array>
 
 
+    <!-- Content descriptions imageloader -->
+    <string name="descr_image">Image</string>
+    <string name="menu_item_clear_memory_cache">Clear memory cache</string>
+    <string name="menu_item_clear_disc_cache">Clear disc cache</string>
+    <string name="menu_item_pause_on_scroll">Pause on scroll</string>
+    <string name="menu_item_pause_on_fling">Pause on fling</string>
+
     <!-- Sample menu -->
     <string name="action_settings">Settings</string>
     <!-- Drawer Items 自己添加的 -->
@@ -43,6 +50,8 @@
     <string name="draw_item_MaterialViewPage_desc">点我进入新世界主页</string>
     <string name="drawer_item_CustomColor">自定义颜色</string>
     <string name="drawer_item_CustomColor_desc">在这里你可以选择喜欢的颜色</string>
+    <string name="drawer_item_ImageLoader">美图欣赏</string>
+    <string name="drawer_item_ImageLoader_desc">在这里，可以看到美图</string>
 
     <!--oneFragment cardview-->
     <string name="news_one_title">Dallas police HQ attack: Suspect believed killed during standoff</string>
