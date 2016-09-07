@@ -90,7 +90,20 @@ dependencies {
     //翻页效果库https://github.com/ToxicBakery/ViewPagerTransforms
     compile(name: 'view-pager-transforms-1.2.32', ext: 'aar')
 
+    //https://github.com/hdodenhof/CircleImageView 圆形头像图片，用于gerendetial界面
+    compile 'de.hdodenhof:circleimageview:2.0.0'
 
+    //filepicker库
+    compile 'com.droidninja:filepicker:1.0.4'
+
+    //okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    //okio
+    compile 'com.squareup.okio:okio:1.9.0'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+
+    //RecyclerViewadapter适配
+    compile 'com.zhy:base-rvadapter:3.0.3'
 }
 
 repositories {

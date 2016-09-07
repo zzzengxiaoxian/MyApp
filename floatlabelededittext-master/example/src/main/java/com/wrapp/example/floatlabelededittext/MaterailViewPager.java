@@ -4,26 +4,36 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.LDM.util.MTPageview.RecyclerViewFragment;
+import com.LDM.util.MTPageview.TestRecyclerViewAdapter;
 import com.github.florent37.materialviewpager.MaterialViewPager;
+import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
+import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
+import com.github.florent37.materialviewpager.header.MaterialViewPagerHeaderDecorator;
 
 /**
  * Created by dell on 2016/8/10.
  */
-public class MaterailViewPager extends ActionBarActivity {
+public class MaterailViewPager extends AppCompatActivity {
 
 
     private MaterialViewPager mViewPager;
     private Toolbar toolbar;
+
+    TestRecyclerViewAdapter adapter;
+
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +45,7 @@ public class MaterailViewPager extends ActionBarActivity {
 
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
 
+        //设置toolbar标题栏
         toolbar = mViewPager.getToolbar();
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -46,7 +57,7 @@ public class MaterailViewPager extends ActionBarActivity {
 //            actionBar.setHomeButtonEnabled(true);
         }
 
-
+        //选项卡的数量
         mViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -78,6 +89,7 @@ public class MaterailViewPager extends ActionBarActivity {
         });
 
 
+        //最上边的颜色和替换的图片
         mViewPager.setMaterialViewPagerListener(new MaterialViewPager.Listener() {
             @Override
             public HeaderDesign getHeaderDesign(int page) {
@@ -106,6 +118,7 @@ public class MaterailViewPager extends ActionBarActivity {
             }
         });
 
+        //添加大标题和点击事项
         mViewPager.getViewPager().setOffscreenPageLimit(mViewPager.getViewPager().getAdapter().getCount());
         mViewPager.getPagerTitleStrip().setViewPager(mViewPager.getViewPager());
 
@@ -120,6 +133,14 @@ public class MaterailViewPager extends ActionBarActivity {
                 }
             });
         }
+
+        //列表
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_1);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        mRecyclerView.setHasFixedSize(true);
+
+        mRecyclerView.setAdapter(adapter);
 
     }
 
@@ -139,4 +160,6 @@ public class MaterailViewPager extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 }

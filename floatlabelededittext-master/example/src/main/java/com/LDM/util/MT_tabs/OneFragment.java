@@ -2,7 +2,6 @@ package com.LDM.util.MT_tabs;
 
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.adapter.RecyclerViewAdapter;
+import com.adapter.OneFragment_Adapter;
 import com.bean.News;
 import com.wrapp.example.floatlabelededittext.MainActivity;
 import com.wrapp.example.floatlabelededittext.R;
@@ -33,7 +30,7 @@ public class OneFragment extends Fragment implements ResettableFragment {
      */
     private RecyclerView recyclerView;
     private List<News> newsList;
-    private RecyclerViewAdapter adapter;
+    private OneFragment_Adapter adapter;
 
 
     @Nullable
@@ -48,7 +45,7 @@ public class OneFragment extends Fragment implements ResettableFragment {
 
         recyclerView = (RecyclerView)v.findViewById(R.id.recyclerView);
         initPersonData();
-        adapter = new RecyclerViewAdapter(newsList,getActivity());
+        adapter = new OneFragment_Adapter(newsList,getActivity());
         recyclerView.setHasFixedSize(true);//优化
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

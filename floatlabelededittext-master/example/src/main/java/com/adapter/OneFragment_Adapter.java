@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.LDM.util.MT_tabs.OneFragment;
 import com.bean.News;
 import com.wrapp.example.floatlabelededittext.NewsActivity;
 import com.wrapp.example.floatlabelededittext.R;
@@ -22,12 +21,12 @@ import java.util.List;
 /**
  * Created by dell on 2016/8/12.
  */
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.NewsViewHolder> {
+public class OneFragment_Adapter extends RecyclerView.Adapter<OneFragment_Adapter.NewsViewHolder> {
 
     private List<News> newses;
     private Context context;
 
-    public RecyclerViewAdapter(List<News> newses, Context context) {
+    public OneFragment_Adapter(List<News> newses, Context context) {
         this.newses = newses;
         this.context = context;
     }
@@ -60,14 +59,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public RecyclerViewAdapter.NewsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public OneFragment_Adapter.NewsViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(context).inflate(R.layout.onefragment_cardview, viewGroup, false);
         NewsViewHolder nvh = new NewsViewHolder(v);
         return nvh;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.NewsViewHolder personViewHolder, int i) {
+    public void onBindViewHolder(OneFragment_Adapter.NewsViewHolder personViewHolder, int i) {
         final int j = i;
 
         personViewHolder.news_photo.setImageResource(newses.get(i).getPhotoId());

@@ -4,8 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.wrapp.example.floatlabelededittext.R;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -62,10 +65,13 @@ public class TestRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
         switch (getItemViewType(position)) {
             case TYPE_HEADER:
+
                 break;
             case TYPE_CELL:
+
                 break;
         }
     }

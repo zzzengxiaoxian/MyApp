@@ -11,8 +11,8 @@ import com.LDM.util.L;
 /**
  * Created by dell on 2016/8/7.
  */
-public class FirstActivity extends Activity {
-    private final int SPLASH_DISPLAY_LENGHT = 4000;// 定义常量1s
+public class SplashActivity extends Activity {
+    private final int SPLASH_DISPLAY_LENGHT = 2000;// 定义常量1s
 
     private Boolean isFirst;
 
@@ -37,15 +37,15 @@ public class FirstActivity extends Activity {
                 if (isFirst) {
                 L.d("TAG", "第一次登陆");
                 Intent intent = new Intent();
-                intent.setClass(FirstActivity.this, AppIntro.class);
-                FirstActivity.this.startActivity(intent);
-                FirstActivity.this.finish();
+                intent.setClass(SplashActivity.this, AppIntro.class);
+                SplashActivity.this.startActivity(intent);
+                SplashActivity.this.finish();
                 } else {
                     L.d("TAG", "第二次登陆");
                     Intent intent = new Intent();
-                    intent.setClass(FirstActivity.this, MainActivity.class);
-                    FirstActivity.this.startActivity(intent);
-                    FirstActivity.this.finish();
+                    intent.setClass(SplashActivity.this, MainActivity.class);
+                    SplashActivity.this.startActivity(intent);
+                    SplashActivity.this.finish();
                 }
 
 

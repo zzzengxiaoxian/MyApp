@@ -7,7 +7,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
-
+    <string name="leave_app">真的要离开吗？</string>
     <string name="sure">确定</string>
     <string name="cancel">取消</string>
     <string name="agree">同意</string>
@@ -35,6 +35,9 @@
         <item>自定义颜色(No SUB)</item>
     </string-array>
 
+
+    <!--menuString-->
+    <string name="title_activity_display_message">我</string>
 
     <!-- Content descriptions imageloader -->
     <string name="descr_image">Image</string>
@@ -109,4 +112,27 @@
 
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</string>
 
+
+    <!--仿微信用到的string-->
+
+
+    <!-- profile-->
+    <string name="profile_txt_album">相册</string>
+    <string name="profile_txt_collect">收藏</string>
+    <string name="profile_txt_money">钱包</string>
+    <string name="profile_txt_card">卡包</string>
+    <string name="profile_txt_smail">表情</string>
+    <string name="profile_txt_setting">设置</string>
+    <string name="profile_txt_username">Allen Juns</string>
+    <string name="profile_txt_userid">微信号：dada2012625</string>
+    <string name="profile_txt_mycode">我的二维码</string>
+
+    <string name="tvtouxiang">头像</string>
+    <string name="tvname">昵称</string>
+    <string name="tvweixin">微信号码</string>
+    <string name="sex">性别</string>
+    <string name="tverweima">二维码名片</string>
+    <string name="tvaddress">我的地址</string>
+    <string name="tvare">地区</string>
+    <string name="tvsign">个性签名</string>
 </resources>

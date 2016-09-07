@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
 
 
+
+
     <color name="colorPrimary1">#FF03A9F4</color>
     <color name="colorPrimaryDark1">#ff0171c9</color>
     <color name="colorAccent1">#FF00E5FF</color>
@@ -24,6 +26,18 @@
     <color name="material_green_A200">#FD87A9</color>
     <color name="material_white">#eeeeee</color>
     <color name="material_white_all">#ffffff</color>
+
+    <color name="line_color">#dbdbdb</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black2">#232325</color>
+    <color name="black3">#ffeeeeee</color>
+    <color name="green">#4CAF50</color>
+    <color name="blue">#347ce9</color>
+    <color name="gray">#9A9A9A</color>
+    <color name="red">#FC2828</color>
+
 
     <array name="progress_colors_light">
         <item>#FF03A9F4</item>

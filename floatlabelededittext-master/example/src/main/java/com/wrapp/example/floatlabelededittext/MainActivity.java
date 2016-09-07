@@ -13,6 +13,7 @@ import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
     ViewPager mViewPager;
     MaterialTabs mMaterialTabs;
 
+    boolean backPressed;
+
     public MainActivity() {
     }
 
@@ -168,7 +171,10 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         mViewPager.setCurrentItem(0);
         //materialTabs--start
 
-        final IProfile profile3 = new ProfileDrawerItem().withName("Max Muster").withEmail("max.mustermann@gmail.com").withIcon(R.drawable.profile2).withIdentifier(102);
+        String Name = "Double Liu";
+        String Email = "999999999@qq.com";
+
+        final IProfile profile = new ProfileDrawerItem().withName(Name).withEmail(Email).withIcon(R.drawable.profile2).withIdentifier(100);
 
 
         // Create the AccountHeader
@@ -177,9 +183,9 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                 .withTranslucentStatusBar(true)
                 .withHeaderBackground(R.drawable.header)//Drawer打开的上边背景图片
                 .addProfiles(
-//                        profile,
+                        profile,
                         //don't ask but google uses 14dp for the add account icon in gmail but 20dp for the normal icons (like manage account)
-                        new ProfileSettingDrawerItem().withName("更换账号").withDescription("退回到主界面更换账号登录").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_plus).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(PROFILE_SETTING),
+                        new ProfileSettingDrawerItem().withName("更换账号").withDescription("退回到主界面更换账号登录").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_arrow_out).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(PROFILE_SETTING),
                         new ProfileSettingDrawerItem().withName("Manage Account").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(100001)
                 ).withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
@@ -190,9 +196,17 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                         if (profile instanceof IDrawerItem && profile.getIdentifier() == PROFILE_SETTING) {
 
                             showToast("退出到主界面更换账户");
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            MainActivity.this.finish();
 //
                         } else {
                             showToast("进入详细设置界面");
+                            Intent intent = new Intent();
+                            intent.setClass(MainActivity.this, PersonalDetails.class);
+                            startActivity(intent);
+
                         }
 
                         //false if you have not consumed the event and it should close the drawer
@@ -254,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(MainActivity.this, MaterailViewPager.class);
                             } else if (drawerItem.getIdentifier() == 3) {
-//                                intent = new Intent(DrawerActivity.this, MultiDrawerActivity.class);
+                                intent = new Intent(MainActivity.this, OkTestActivity.class);
                             } else if (drawerItem.getIdentifier() == 4) {
 //                                intent = new Intent(DrawerActivity.this, NonTranslucentDrawerActivity.class);
                             } else if (drawerItem.getIdentifier() == 5) {
@@ -360,8 +374,8 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
             // set the selection to the item with the identifier 11
             result.setSelection(21, false);
 
-            //set the active profile
-            headerResult.setActiveProfile(profile3);
+//            //set the active profile
+//            headerResult.setActiveProfile(profile3);
         }
 
         result.updateBadge(4, new StringHolder(10 + ""));
@@ -396,10 +410,30 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         if (result != null && result.isDrawerOpen()) {
             result.closeDrawer();
         } else {
-            super.onBackPressed();
+            doublePressBackToQuit();
         }
     }
 
+    private void doublePressBackToQuit() {
+        if (backPressed) {
+            super.onBackPressed();
+            return;
+        }
+        backPressed = true;
+        showSnack(result.getDrawerLayout(), R.string.leave_app);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                backPressed = false;
+            }
+        }, 2000);
+    }
+
+    public static void showSnack(View rootView, int textId) {
+        if (null != rootView) {
+            Snackbar.make(rootView, textId, Snackbar.LENGTH_SHORT).show();
+        }
+    }
 
     /**
      * float悬浮按钮
