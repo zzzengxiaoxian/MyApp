@@ -135,12 +135,12 @@ public class MaterailViewPager extends AppCompatActivity {
         }
 
         //列表
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_1);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        mRecyclerView.setHasFixedSize(true);
-
-        mRecyclerView.setAdapter(adapter);
+//        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView_1);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+//        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+//        mRecyclerView.setHasFixedSize(true);
+//
+//        mRecyclerView.setAdapter(adapter);
 
     }
 

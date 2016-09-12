@@ -7,7 +7,7 @@
 
     <!--记得用 support v7 里的 toolbar，不然只有 API Level 21 以上也就是 Android 5.0 以上的版本才能使用。-->
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -49,14 +49,14 @@
                     android:textSize="16sp" />
 
 
-                <com.LDM.util.ZoomableImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                <com.LDM.util.AvatarImageView
+                    android:id="@+id/avatarIv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"
-                    android:src="@drawable/profile2" />
+                    android:src="@drawable/profile" />
 
 
             </RelativeLayout>

@@ -19,6 +19,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
@@ -34,11 +35,14 @@ import com.LDM.util.MT_tabs.OneFragment;
 import com.LDM.util.MT_tabs.ResettableFragment;
 import com.LDM.util.MT_tabs.ThreeFragment;
 import com.LDM.util.MT_tabs.TwoFragment;
+import com.LDM.util.Sqlite.UserService;
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.afollestad.materialdialogs.color.CircleView;
 import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.afollestad.materialdialogs.internal.ThemeSingleton;
 import com.afollestad.materialdialogs.util.DialogUtils;
+import com.bean.User;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.LibsBuilder;
 import com.mikepenz.fastadapter.utils.RecyclerViewCacheUtil;
@@ -71,6 +75,7 @@ import com.mikepenz.octicons_typeface_library.Octicons;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
+import com.squareup.haha.perflib.Main;
 
 import java.util.ArrayList;
 
@@ -185,22 +190,48 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                 .addProfiles(
                         profile,
                         //don't ask but google uses 14dp for the add account icon in gmail but 20dp for the normal icons (like manage account)
-                        new ProfileSettingDrawerItem().withName("更换账号").withDescription("退回到主界面更换账号登录").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_arrow_out).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(PROFILE_SETTING),
-                        new ProfileSettingDrawerItem().withName("Manage Account").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(100001)
+                        new ProfileSettingDrawerItem().withName("我要更换账号").withDescription("退回到主界面更换账号登录").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_arrow_out).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(PROFILE_SETTING),
+                        new ProfileSettingDrawerItem().withName("我的详细信息").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(100001)
                 ).withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
                     public boolean onProfileChanged(View view, IProfile profile, boolean current) {
+
+
                         //sample usage of the onProfileChanged listener
                         //if the clicked item has the identifier 1 add a new profile ;)
                         L.d("TAG", profile.toString());
                         if (profile instanceof IDrawerItem && profile.getIdentifier() == PROFILE_SETTING) {
 
-                            showToast("退出到主界面更换账户");
-                            Intent intent = new Intent();
-                            intent.setClass(MainActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            MainActivity.this.finish();
-//
+                            new MaterialDialog.Builder(MainActivity.this)
+                                    .content(R.string.change_account)
+                                    .positiveText(R.string.agree)
+                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                            //退出当前账户后  那儿就清空账号密码
+                                            UserService uService = new UserService(MainActivity.this);
+                                            User user = new User();
+                                            user.setUsername("liuliuliu");
+                                            user.setPassword("liuliuliu");
+                                            uService.register(user);
+
+                                            Intent intent = new Intent();
+                                            intent.setClass(MainActivity.this, LoginActivity.class);
+                                            startActivity(intent);
+                                            MainActivity.this.finish();
+                                        }
+                                    })
+                                    .negativeText(R.string.disagree)
+                                    .onNegative(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .show();
+
+
                         } else {
                             showToast("进入详细设置界面");
                             Intent intent = new Intent();
@@ -244,13 +275,13 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
                         new SecondaryDrawerItem().withName(R.string.drawer_item_open_source).withIcon(FontAwesome.Icon.faw_github).withIdentifier(20).withSelectable(false),
                         new SecondaryDrawerItem().withName(R.string.drawer_item_contact).withIcon(GoogleMaterial.Icon.gmd_format_color_fill).withIdentifier(21).withTag("Bullhorn"),
                         new DividerDrawerItem(),
-                        new SwitchDrawerItem().withName("Switch").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new SwitchDrawerItem().withName("Switch2").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
+                        new SwitchDrawerItem().withName("夜间模式").withIcon(Octicons.Icon.oct_eye_watch).withChecked(false).withOnCheckedChangeListener(onCheckedChangeListener),
+                        new SwitchDrawerItem().withName("日间模式").withIcon(Octicons.Icon.oct_eye_unwatch).withChecked(false).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
                         new ToggleDrawerItem().withName("Toggle").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new DividerDrawerItem(),
-                        new SecondarySwitchDrawerItem().withName("Secondary switch").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new SecondarySwitchDrawerItem().withName("Secondary Switch2").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
-                        new SecondaryToggleDrawerItem().withName("Secondary toggle").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener)
+                        new DividerDrawerItem()
+//                        new SecondarySwitchDrawerItem().withName("Secondary switch").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
+//                        new SecondarySwitchDrawerItem().withName("Secondary Switch2").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
+//                        new SecondaryToggleDrawerItem().withName("Secondary toggle").withIcon(Octicons.Icon.oct_tools).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener)
                 ) // add the items we want to use with our Drawer
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -389,8 +420,34 @@ public class MainActivity extends AppCompatActivity implements ColorChooserDialo
         public void onCheckedChanged(IDrawerItem drawerItem, CompoundButton buttonView, boolean isChecked) {
             if (drawerItem instanceof Nameable) {
                 Log.i("material-drawer", "DrawerItem: " + ((Nameable) drawerItem).getName() + " - toggleChecked: " + isChecked);
+
+                String a = ((Nameable) drawerItem).getName() + "";
+
+                if (a.equals("夜间模式")) {
+                    if (isChecked == true) {
+                        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        recreate();
+                    }
+
+
+                } else if (a.equals("日间模式")) {
+
+
+                    if (isChecked == true) {
+
+                        getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                        recreate();
+                    }
+
+
+                } else {
+                    Toast.makeText(MainActivity.this, "S1", Toast.LENGTH_SHORT).show();
+                }
+
+
             } else {
                 Log.i("material-drawer", "toggleChecked: " + isChecked);
+                Toast.makeText(MainActivity.this, "S2", Toast.LENGTH_SHORT).show();
             }
         }
     };

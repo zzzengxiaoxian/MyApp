@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#dbd1bb">
+    android:background="#ffffff">
 
 
     <android.support.v7.widget.Toolbar
@@ -15,51 +15,77 @@
         android:elevation="4dp"
         tools:ignore="UnusedAttribute" />
 
+    <RelativeLayout
+        android:id="@+id/linear11"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/linear1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/email" />
 
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:id="@+id/linear1"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        app:fletPadding="10dp">
-
-        <EditText
-            android:id="@+id/edtemail"
-            android:layout_width="match_parent"
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:id="@+id/linear1"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:textColorHint="#1d1d1d"
-            android:hint="邮箱" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            app:fletPadding="10dp">
 
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+            <EditText
+                android:id="@+id/edtemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="邮箱"
+                android:textColorHint="#1d1d1d" />
 
-    <com.wrapp.floatlabelededittext.FloatLabeledEditText
-        android:id="@+id/linear2"
-        android:layout_width="250dp"
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linear22"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linear1"
-        android:layout_centerHorizontal="true"
-        app:fletPaddingBottom="10dp">
+        android:layout_below="@+id/linear11">
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignBottom="@+id/linear2"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/password" />
 
-        <EditText
-            android:id="@+id/edtpwd"
-            android:layout_width="match_parent"
+        <com.wrapp.floatlabelededittext.FloatLabeledEditText
+            android:id="@+id/linear2"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:textColorHint="#1d1d1d"
-            android:hint="密码" />
+            android:layout_centerHorizontal="true"
+            app:fletPaddingBottom="10dp">
 
-    </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+            <EditText
+                android:id="@+id/edtpwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="密码"
+                android:textColorHint="#1d1d1d" />
 
+        </com.wrapp.floatlabelededittext.FloatLabeledEditText>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btnlogin"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/linear2"
+        android:layout_below="@+id/linear22"
+        android:layout_centerHorizontal="true"
         android:layout_margin="60dp"
-       android:layout_centerHorizontal="true"
         android:background="@drawable/btn_long"
         android:text="登录"
         android:textColor="#ffffff"

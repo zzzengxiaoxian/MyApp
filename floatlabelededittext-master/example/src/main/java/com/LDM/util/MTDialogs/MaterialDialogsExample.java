@@ -43,6 +43,7 @@
 //import com.afollestad.materialdialogs.simplelist.MaterialSimpleListAdapter;
 //import com.afollestad.materialdialogs.simplelist.MaterialSimpleListItem;
 //import com.afollestad.materialdialogs.util.DialogUtils;
+//import com.wrapp.example.floatlabelededittext.R;
 //
 //import java.io.File;
 //
@@ -473,7 +474,7 @@
 //                .onPositive(new MaterialDialog.SingleButtonCallback() {
 //                    @Override
 //                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                        showToast("Password: " + passwordInput.getText().toString());
+//                        showToast("password: " + passwordInput.getText().toString());
 //                    }
 //                }).build();
 //

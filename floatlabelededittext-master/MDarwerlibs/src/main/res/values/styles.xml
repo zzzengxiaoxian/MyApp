@@ -217,7 +217,7 @@
 
 
     <!-- LIGHT DARK ACTIONBAR -->
-    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="MaterialTheme.Light.DarkToolbar">
+    <style name="MaterialDrawerTheme.Light.DarkToolbar" parent="MaterialTheme.Light.DarkToolbar">//MaterialTheme.Light.DarkToolbar
         <!-- Here we setting appcompat’s actionBarStyle -->
         <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
 

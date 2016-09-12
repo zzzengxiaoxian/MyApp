@@ -93,7 +93,7 @@ dependencies {
     //https://github.com/hdodenhof/CircleImageView 圆形头像图片，用于gerendetial界面
     compile 'de.hdodenhof:circleimageview:2.0.0'
 
-    //filepicker库
+    //filepicker库  https://github.com/DroidNinja/Android-FilePicker
     compile 'com.droidninja:filepicker:1.0.4'
 
     //okhttp
@@ -102,7 +102,7 @@ dependencies {
     compile 'com.squareup.okio:okio:1.9.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 
-    //RecyclerViewadapter适配
+    //RecyclerViewadapter适配 https://github.com/hongyangAndroid/baseAdapter
     compile 'com.zhy:base-rvadapter:3.0.3'
 }
 
